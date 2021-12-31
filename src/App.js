@@ -69,16 +69,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [recentlyFiled, setRecentlyFiled] = useState(null);
- 
-  // useEffect(() => {
-  //   async function getRecentlyFiled() {
-  //     const resp = await fetch("http://localhost:3000/api/v1/ipos-recently-filed")
-  //     const data = await (resp.json())
-  //     setRecentlyFiled(data);
-  //   }
-  //   getRecentlyFiled();
-  // }, [])
   
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
