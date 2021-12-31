@@ -1,12 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 import './index.css';
-import DashboardContent from './App';
+import App from './App';
+import RecentlyFiled from './routes/RecentlyFiled';
+import LastOneHundred from './routes/LastOneHundred';
+import LastTwelveMonths from './routes/LastTwelveMonths';
+import CurrentYearPricings from './routes/CurrentYearPricings';
+import IpoCalendar from './routes/IpoCalendar';
+import IpoIndex from './routes/IpoIndex';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DashboardContent />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/ipos-recently-filed" element={<RecentlyFiled />} />
+        <Route path="/last-100-ipos" element={<LastOneHundred />} />
+        <Route path="/last-12-months" element={<LastTwelveMonths />} />
+        <Route path="/current-year-pricings" element={<CurrentYearPricings/>} />
+        <Route path="/ipo-calendar" element={<IpoCalendar />} />
+        <Route path="/ipo-index" element={<IpoIndex />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
