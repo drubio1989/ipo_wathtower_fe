@@ -1,17 +1,24 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import CircularProgress from '@mui/material/CircularProgress';
 import Title from '../components/Title';
+import TopBar from '../components/AppBar';
+import NavDrawer from '../components/Drawer';
+import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
+
+const mdTheme = createTheme();
 
 export default function RecentlyFiled() {
   const [recentlyFiled, setRecentlyFiled] = useState(null);
@@ -30,6 +37,24 @@ export default function RecentlyFiled() {
   }
 
   return (
+    <ThemeProvider theme={mdTheme}>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <TopBar />
+      <NavDrawer />
+        <Box
+            component="main"
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.mode === 'light'
+                  ? theme.palette.grey[100]
+                  : theme.palette.grey[900],
+              flexGrow: 1,
+              height: '100vh',
+              overflow: 'auto',
+            }}
+          >
+        <Toolbar />
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
@@ -69,5 +94,8 @@ export default function RecentlyFiled() {
         </Grid>
       </Grid>
     </Container>
+    </Box>
+    </Box>
+    </ThemeProvider>
   );
 }
