@@ -36,6 +36,8 @@ export default function CurrentYearPricings() {
     return <CircularProgress/>
   }
 
+  const regex = /\/companies\/\D+/g;
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -78,7 +80,9 @@ export default function CurrentYearPricings() {
                       {CurrentYearPricings.map((ipo) => (
                         <TableRow key={ipo.id}>      
                           <TableCell>{ipo.attributes.offer_date}</TableCell>
-                          <TableCell>{ipo.attributes.company}</TableCell>
+                          <TableCell>
+                            <Link href={ipo.relationships.company.links.related.match(regex)}>{ipo.attributes.company}</Link>
+                          </TableCell>
                           <TableCell>{ipo.attributes.ticker}</TableCell>
                           <TableCell>{ipo.attributes.industry}</TableCell>
                           <TableCell>{ipo.attributes.shares}</TableCell>

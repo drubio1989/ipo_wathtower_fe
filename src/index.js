@@ -13,6 +13,7 @@ import LastTwelveMonths from './routes/LastTwelveMonths';
 import CurrentYearPricings from './routes/CurrentYearPricings';
 import IpoCalendar from './routes/IpoCalendar';
 import IpoIndex from './routes/IpoIndex';
+import Company from './routes/Company';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route path="/current-year-pricings" element={<CurrentYearPricings/>} />
         <Route path="/ipo-calendar" element={<IpoCalendar />} />
         <Route path="/ipo-index" element={<IpoIndex />} />
+        <Route path="/companies/*" element={<Company />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
