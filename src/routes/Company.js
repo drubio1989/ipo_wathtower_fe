@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useLocation } from "react-router-dom"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
@@ -13,15 +14,17 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 
+
 const mdTheme = createTheme();
 
 export default function Company() {
   const [company, setCompany] = useState(null);
   const [ipo, setIpo] = useState(null)
+  const companyUrl = useLocation();
 
   useEffect(() => {   
     async function getCompany() {
-      const resp = await fetch("http://localhost:3000/api/v1/companies/BNOX")
+      const resp = await fetch("http://localhost:3000/api/v1/" + companyUrl.pathname)
       const objects = await (resp.json());
       setCompany(objects.data);
       setIpo(objects.included[0]);
