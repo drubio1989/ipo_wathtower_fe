@@ -14,6 +14,7 @@ import CurrentYearPricings from './routes/CurrentYearPricings';
 import IpoCalendar from './routes/IpoCalendar';
 import IpoIndex from './routes/IpoIndex';
 import Company from './routes/Company';
+import NotFound from './routes/NotFound';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path="/ipo-calendar" element={<IpoCalendar />} />
         <Route path="/ipo-index" element={<IpoIndex />} />
         <Route path="/companies/*" element={<Company />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
