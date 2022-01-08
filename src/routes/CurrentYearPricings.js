@@ -89,6 +89,7 @@ export default function CurrentYearPricings() {
                     <TableHead>
                       <TableRow>
                         <TableCell>Company</TableCell>
+                        <TableCell>Offer Date</TableCell>
                         <TableCell>Ticker</TableCell>
                         <TableCell>Industry</TableCell>
                         <TableCell>Shares</TableCell>
@@ -101,10 +102,10 @@ export default function CurrentYearPricings() {
                     <TableBody>
                       {CurrentYearPricings.map((ipo) => (
                         <TableRow key={ipo.id}>      
-                          <TableCell>{ipo.attributes.offer_date}</TableCell>
                           <TableCell>
                             <Link href={ipo.relationships.company.links.related.match(regex)}>{ipo.attributes.company}</Link>
                           </TableCell>
+                          <TableCell>{ipo.attributes.offer_date}</TableCell>
                           <TableCell>{ipo.attributes.ticker}</TableCell>
                           <TableCell>{ipo.attributes.industry}</TableCell>
                           <TableCell>{ipo.attributes.shares}</TableCell>

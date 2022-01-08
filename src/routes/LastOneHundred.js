@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Table from '@mui/material/Table';
@@ -17,16 +18,20 @@ import TopBar from '../components/AppBar';
 import NavDrawer from '../components/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
+import BasicPagination from '../components/Pagination';
 
 const mdTheme = createTheme();
 
 export default function LastOneHundred() {
   const [lastOneHundred, setLastOneHundred] = useState(null);
-
+  const [paginationLinks, setPaginationLinks] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+ 
   useEffect(() => {   
     async function getLast100() {
-      const resp = await fetch("http://localhost:3000/api/v1/last-100-ipos")
+      const resp = await fetch(`http://localhost:3000/api/v1/last-100-ipos${searchParams}`)
       const objects = await (resp.json())
+      setPaginationLinks(objects.links);
       setLastOneHundred(objects.data);
     }
     getLast100();
@@ -59,7 +64,8 @@ export default function LastOneHundred() {
     )
   }
 
-  const regex = /\/companies\/\D+/g;
+  const regex = /\/companies\/\D+/g; 
+  const paginationTotalCountRegex = /\d+$/g;
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -117,6 +123,10 @@ export default function LastOneHundred() {
                   ))}
                 </TableBody>
               </Table>
+              <BasicPagination 
+                total={paginationLinks.last.match(paginationTotalCountRegex)}
+                setSearchParams={setSearchParams}
+              />
             </Paper>
           </Grid>
         </Grid>
