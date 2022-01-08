@@ -33,7 +33,30 @@ export default function Company() {
   }, [])
 
   if (company === null) {
-    return <CircularProgress/>
+    return( <Box
+      component="main"
+      sx={{
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[900],
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+      }}
+    >
+    <Toolbar />
+    <Container  maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
+      <Box
+        display="flex"   
+        sx={{ justifyContent: 'center', width: 500 }}
+
+      >
+      <CircularProgress/>
+      </Box>
+    </Container>
+    </Box>
+    )
   }
 
   if (ipo === null) {
