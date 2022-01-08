@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 import ListItemText from '@mui/material/ListItemText';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import MoneyIcon from '@mui/icons-material/Money';
@@ -12,6 +13,14 @@ import ListIcon from '@mui/icons-material/List';
 const NavMenu = () => {
   return(
       <div>
+         <ListItemButton component="a" href='/'>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard">
+          </ListItemText>
+        </ListItemButton>
+
         <ListItemButton component="a" href='/ipos-recently-filed'>
           <ListItemIcon>
             <PageviewIcon />

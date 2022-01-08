@@ -27,7 +27,7 @@ ReactDOM.render(
         <Route path="/last-12-months" element={<LastTwelveMonths />} />
         <Route path="/current-year-pricings" element={<CurrentYearPricings/>} />
         <Route path="/ipo-calendar" element={<IpoCalendar />} />
-        <Route path="/ipo-index" element={<IpoIndex />} />
+        <Route path="/ipo-index/*" element={<IpoIndex />} />
         <Route path="/companies/*" element={<Company />} />
         <Route path='*' element={<NotFound />} />
       </Routes>

@@ -89,7 +89,7 @@ export default function LastOneHundred() {
                       <TableCell>{ipo.attributes.offer_price}</TableCell>
                       <TableCell>{ipo.attributes.first_day_close_price}</TableCell>
                       <TableCell>{ipo.attributes.current_price}</TableCell>
-                      <TableCell>{ipo.attributes.rate_of_return}</TableCell>
+                      <TableCell>{ipo.attributes.rate_of_return}%</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

@@ -25,7 +25,7 @@ export default function CurrentYearPricings() {
 
   useEffect(() => {   
     async function getCurrentYearPricings() {
-      const resp = await fetch("http://localhost:3000/api/v1/last-12-months")
+      const resp = await fetch("http://localhost:3000/api/v1/current-year-pricings")
       const objects = await (resp.json())
       setCurrentYearPricings(objects.data);
     }
@@ -65,7 +65,6 @@ export default function CurrentYearPricings() {
                   <Table size="small">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Offer Date</TableCell>
                         <TableCell>Company</TableCell>
                         <TableCell>Ticker</TableCell>
                         <TableCell>Industry</TableCell>
@@ -89,7 +88,7 @@ export default function CurrentYearPricings() {
                           <TableCell>{ipo.attributes.offer_price}</TableCell>
                           <TableCell>{ipo.attributes.first_day_close_price}</TableCell>
                           <TableCell>{ipo.attributes.current_price}</TableCell>
-                          <TableCell>{ipo.attributes.rate_of_return}</TableCell>
+                          <TableCell>{ipo.attributes.rate_of_return}%</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
