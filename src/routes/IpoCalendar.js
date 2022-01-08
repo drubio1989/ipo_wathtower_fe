@@ -15,6 +15,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const mdTheme = createTheme();
 
@@ -42,6 +43,43 @@ const IpoCalendar = props => {
     getIpoCalendar();
   }, [])
 
+  if (ipos === null) {
+    return( <Box
+      component="main"
+      sx={{
+        backgroundColor: (theme) =>
+          theme.palette.mode === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[900],
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+      }}
+    >
+    <Toolbar />
+    <Container  maxWidth="sm" sx={{ mt: 4, mb: 4 }}>
+      <Box
+        display="flex"   
+        sx={{ justifyContent: 'center', width: 500 }}
+
+      >
+      <CircularProgress/>
+      </Box>
+    </Container>
+    </Box>
+    )
+  }
+
+  const events = ipos.map((ipo) => {
+    const date = new Date(ipo.attributes.expected_to_trade);
+    
+    return({
+      "title": ipo.attributes.company,
+      "start": new Date(date.getFullYear(), date.getMonth(), date.getDate()),
+      "end": new Date(date.getFullYear(), date.getMonth(), date.getDate())
+    })
+  });
+
   return(
     <ThemeProvider theme={mdTheme}>
     <Box sx={{ display: 'flex' }}>
@@ -65,15 +103,7 @@ const IpoCalendar = props => {
           <Grid container spacing={3}>
             <Calendar
               localizer={localizer}
-              events={[
-                {
-                  start: moment().toDate(),
-                  end: moment()
-                    .add(1, "days")
-                    .toDate(),
-                  title: "AMLX"
-                }
-              ]}
+              events={events}
               startAccessor="start"
               endAccessor="end"
               style={{ height: 1000, width: 1000 }}
