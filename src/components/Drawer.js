@@ -4,8 +4,6 @@ import MuiDrawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider'
-import IconButton from '@mui/material/IconButton';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NavMenu from './NavMenu';
 
 const drawerWidth = 240;
@@ -38,9 +36,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const NavDrawer = () => {
   const [open, setOpen] = useState(true);
-    const toggleDrawer = () => {
-    setOpen(!open);
-  };
 
   return(
     <Drawer variant="permanent" open={open}>
@@ -52,9 +47,7 @@ const NavDrawer = () => {
           px: [1],
         }}
       >
-        {/* <IconButton onClick={toggleDrawer}>
-          <ChevronLeftIcon />
-        </IconButton> */}
+
       </Toolbar>
       <Divider />
       <List>
